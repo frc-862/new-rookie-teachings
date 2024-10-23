@@ -7,14 +7,15 @@ package frc.robot.subsystems;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.lib.SimMotor;
 
 public class Collector extends SubsystemBase {
 
-    private TalonFX motor;
+    private SimMotor motor;
 
     /** Creates a new Collector. */
     public Collector() {
-        motor = new TalonFX(5);
+        motor = new SimMotor(5);
     }
 
     public void setPower(double power) {

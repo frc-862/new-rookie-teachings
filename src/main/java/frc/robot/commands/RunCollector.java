@@ -17,6 +17,8 @@ public class RunCollector extends Command {
     public RunCollector(Collector collector, DoubleSupplier power) {
         this.collector = collector;
         this.power = power;
+
+        addRequirements(collector);
     }
 
     @Override

@@ -26,7 +26,7 @@ public class RobotContainer {
     }
 
     public void configureDefaultCommands() {
-        collector.setDefaultCommand(new RunCollector(collector, () -> controller.getRightTriggerAxis() - controller.getLeftTriggerAxis()));
+        collector.setDefaultCommand(new RunCollector(collector, () -> controller.getRawAxis(1) - controller.getRawAxis(2)));
     }
 
     public Command getAutonomousCommand() {
