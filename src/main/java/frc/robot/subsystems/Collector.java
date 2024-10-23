@@ -16,6 +16,14 @@ public class Collector extends SubsystemBase {
     motor = new Talon(5);
   }
 
+  public void setPower(double power) {
+    motor.set(power);
+  }
+
+  public void stop() {
+    setPower(0d);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

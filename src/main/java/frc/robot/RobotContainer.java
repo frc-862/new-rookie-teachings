@@ -5,7 +5,9 @@
 package frc.robot;
 
 import frc.robot.commands.ExampleCommand;
+import frc.robot.subsystems.Collector;
 import frc.robot.subsystems.ExampleSubsystem;
+
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -13,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
 
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private final Collector collector = new Collector();
 
   private final XboxController controller = new XboxController(0);
 
@@ -21,9 +24,7 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    new Trigger(() -> controller.getAButton()).onTrue(new ExampleCommand(m_exampleSubsystem));
-
-    new Trigger(() -> controller.getXButton()).whileTrue(new ExampleCommand(m_exampleSubsystem));
+    
   }
 
   public Command getAutonomousCommand() {
