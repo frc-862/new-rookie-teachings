@@ -10,38 +10,38 @@ import edu.wpi.first.wpilibj2.command.Command;
 /** An example command that uses an example subsystem. */
 public class ExampleCommand extends Command {
 
-  private final ExampleSubsystem subsystem;
+    private final ExampleSubsystem subsystem;
 
-  /**
-   * Creates a new ExampleCommand.
-   */
-  public ExampleCommand(ExampleSubsystem subsystem) {
-    this.subsystem = subsystem;
-  
-    addRequirements(subsystem);
-  }
+    /**
+     * Creates a new ExampleCommand.
+     */
+    public ExampleCommand(ExampleSubsystem subsystem) {
+        this.subsystem = subsystem;
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {
-    System.out.println("I'm initializing!");
-  }
+        addRequirements(subsystem);
+    }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-    System.out.println("I'm still running!");
-  }
+    // Called when the command is initially scheduled.
+    @Override
+    public void initialize() {
+        System.out.println("I'm initializing!");
+    }
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-    System.out.println("I'm finishing up now!");
-  }
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void execute() {
+        System.out.println("I'm still running!");
+    }
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+    // Called once the command ends or is interrupted.
+    @Override
+    public void end(boolean interrupted) {
+        System.out.println("I'm finishing up now!");
+    }
+
+    // Returns true when the command should end.
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
 }

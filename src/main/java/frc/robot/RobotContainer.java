@@ -4,30 +4,32 @@
 
 package frc.robot;
 
-import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.RunCollector;
 import frc.robot.subsystems.Collector;
-import frc.robot.subsystems.ExampleSubsystem;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class RobotContainer {
 
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  private final Collector collector = new Collector();
+    private Collector collector = new Collector();
 
-  private final XboxController controller = new XboxController(0);
+    private final XboxController controller = new XboxController(0);
 
-  public RobotContainer() {
-    configureBindings();
-  }
+    public RobotContainer() {
+        configureBindings();
+        configureDefaultCommands();
+    }
 
-  private void configureBindings() {
-    
-  }
+    private void configureBindings() {
+        
+    }
 
-  public Command getAutonomousCommand() {
-    return null;
-  }
+    public void configureDefaultCommands() {
+        collector.setDefaultCommand(new RunCollector(collector, () -> controller.getRightTriggerAxis() - controller.getLeftTriggerAxis()));
+    }
+
+    public Command getAutonomousCommand() {
+        return null;
+    }
 }

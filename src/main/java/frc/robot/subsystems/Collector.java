@@ -4,28 +4,29 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.motorcontrol.Talon;
+import com.ctre.phoenix6.hardware.TalonFX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Collector extends SubsystemBase {
 
-  private Talon motor;
+    private TalonFX motor;
 
-  /** Creates a new Collector. */
-  public Collector() {
-    motor = new Talon(5);
-  }
+    /** Creates a new Collector. */
+    public Collector() {
+        motor = new TalonFX(5);
+    }
 
-  public void setPower(double power) {
-    motor.set(power);
-  }
+    public void setPower(double power) {
+        motor.set(power);
+    }
 
-  public void stop() {
-    setPower(0d);
-  }
+    public void stop() {
+        setPower(0d);
+    }
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
+    @Override
+    public void periodic() {
+        // This method will be called once per scheduler run
+    }
 }
