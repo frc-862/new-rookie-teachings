@@ -9,12 +9,12 @@ import java.util.function.DoubleSupplier;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Collector;
 
-public class RunCollector extends Command {
+public class Collect extends Command {
 
     private Collector collector;
     private DoubleSupplier power;
 
-    public RunCollector(Collector collector, DoubleSupplier power) {
+    public Collect(Collector collector, DoubleSupplier power) {
         this.collector = collector;
         this.power = power;
 
@@ -23,7 +23,7 @@ public class RunCollector extends Command {
 
     @Override
     public void initialize() {
-        
+        collector.setPower(power.getAsDouble());
     }
 
     @Override

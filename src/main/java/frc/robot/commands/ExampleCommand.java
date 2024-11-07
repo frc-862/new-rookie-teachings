@@ -3,22 +3,17 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands;
-
-import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
 public class ExampleCommand extends Command {
 
-    private final ExampleSubsystem subsystem;
-
     /**
      * Creates a new ExampleCommand.
      */
-    public ExampleCommand(ExampleSubsystem subsystem) {
-        this.subsystem = subsystem;
+    public ExampleCommand() {
 
-        addRequirements(subsystem);
+        addRequirements();
     }
 
     // Called when the command is initially scheduled.

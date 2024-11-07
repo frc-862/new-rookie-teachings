@@ -26,11 +26,13 @@ public class WheelSim extends LinearSystemSim<N2, N1, N2> {
   /**
    * Creates a simulated wheel mechanism.
    *
-   * @param plant The linear system that represents the wheel. This system can be created with
-   *     {@link edu.wpi.first.math.system.plant.LinearSystemId#createwheelSystem(DCMotor, double,
-   *     double)}.
+   * @param plant   The linear system that represents the wheel. This system can
+   *                be created with
+   *                {@link edu.wpi.first.math.system.plant.LinearSystemId#createwheelSystem(DCMotor, double,
+   *                double)}.
    * @param gearbox The type of and number of motors in the wheel gearbox.
-   * @param gearing The gearing of the wheel (numbers greater than 1 represent reductions).
+   * @param gearing The gearing of the wheel (numbers greater than 1 represent
+   *                reductions).
    */
   public WheelSim(LinearSystem<N2, N1, N2> plant, DCMotor gearbox, double gearing) {
     super(plant);
@@ -39,30 +41,35 @@ public class WheelSim extends LinearSystemSim<N2, N1, N2> {
   }
 
   // /**
-  //  * Creates a simulated wheel mechanism.
-  //  *
-  //  * @param plant The linear system that represents the wheel.
-  //  * @param gearbox The type of and number of motors in the wheel gearbox.
-  //  * @param gearing The gearing of the wheel (numbers greater than 1 represent reductions).
-  //  * @param measurementStdDevs The standard deviations of the measurements.
-  //  */
+  // * Creates a simulated wheel mechanism.
+  // *
+  // * @param plant The linear system that represents the wheel.
+  // * @param gearbox The type of and number of motors in the wheel gearbox.
+  // * @param gearing The gearing of the wheel (numbers greater than 1 represent
+  // reductions).
+  // * @param measurementStdDevs The standard deviations of the measurements.
+  // */
   // public WheelSim(
-  //     LinearSystem<N2, N1, N2> plant,
-  //     DCMotor gearbox,
-  //     double gearing,
-  //     Matrix<N1, N1> measurementStdDevs) {
-  //   super(plant, measurementStdDevs);
-  //   m_gearbox = gearbox;
-  //   m_gearing = gearing;
+  // LinearSystem<N2, N1, N2> plant,
+  // DCMotor gearbox,
+  // double gearing,
+  // Matrix<N1, N1> measurementStdDevs) {
+  // super(plant, measurementStdDevs);
+  // m_gearbox = gearbox;
+  // m_gearing = gearing;
   // }
 
   /**
    * Creates a simulated wheel mechanism.
    *
-   * @param gearbox The type of and number of motors in the wheel gearbox.
-   * @param gearing The gearing of the wheel (numbers greater than 1 represent reductions).
-   * @param jKgMetersSquared The moment of inertia of the wheel. If this is unknown, use the
-   *     {@link #wheelSim(LinearSystem, DCMotor, double, Matrix)} constructor.
+   * @param gearbox          The type of and number of motors in the wheel
+   *                         gearbox.
+   * @param gearing          The gearing of the wheel (numbers greater than 1
+   *                         represent reductions).
+   * @param jKgMetersSquared The moment of inertia of the wheel. If this is
+   *                         unknown, use the
+   *                         {@link #wheelSim(LinearSystem, DCMotor, double, Matrix)}
+   *                         constructor.
    */
   public WheelSim(DCMotor gearbox, double gearing, double jKgMetersSquared) {
     super(LinearSystemId.createDCMotorSystem(gearbox, jKgMetersSquared, gearing));
@@ -72,20 +79,23 @@ public class WheelSim extends LinearSystemSim<N2, N1, N2> {
   }
 
   // /**
-  //  * Creates a simulated wheel mechanism.
-  //  *
-  //  * @param gearbox The type of and number of motors in the wheel gearbox.
-  //  * @param gearing The gearing of the wheel (numbers greater than 1 represent reductions).
-  //  * @param jKgMetersSquared The moment of inertia of the wheel. If this is unknown, use the
-  //  *     {@link #wheelSim(LinearSystem, DCMotor, double, Matrix)} constructor.
-  //  * @param measurementStdDevs The standard deviations of the measurements.
-  //  */
+  // * Creates a simulated wheel mechanism.
+  // *
+  // * @param gearbox The type of and number of motors in the wheel gearbox.
+  // * @param gearing The gearing of the wheel (numbers greater than 1 represent
+  // reductions).
+  // * @param jKgMetersSquared The moment of inertia of the wheel. If this is
+  // unknown, use the
+  // * {@link #wheelSim(LinearSystem, DCMotor, double, Matrix)} constructor.
+  // * @param measurementStdDevs The standard deviations of the measurements.
+  // */
   // public WheelSim(
-  //     DCMotor gearbox, double gearing, double jKgMetersSquared, Matrix<N1, N1> measurementStdDevs) {
-  //   super(
-  //       LinearSystemId.createDCMotorSystem(gearbox, jKgMetersSquared, gearing));
-  //   m_gearbox = gearbox;
-  //   m_gearing = gearing;
+  // DCMotor gearbox, double gearing, double jKgMetersSquared, Matrix<N1, N1>
+  // measurementStdDevs) {
+  // super(
+  // LinearSystemId.createDCMotorSystem(gearbox, jKgMetersSquared, gearing));
+  // m_gearbox = gearbox;
+  // m_gearing = gearing;
   // }
 
   /**
@@ -119,19 +129,20 @@ public class WheelSim extends LinearSystemSim<N2, N1, N2> {
     return getOutput(1);
   }
 
-
   // /**
-  //  * Returns the wheel current draw.
-  //  *
-  //  * @return The wheel current draw.
-  //  */
+  // * Returns the wheel current draw.
+  // *
+  // * @return The wheel current draw.
+  // */
   // @Override
   // public double getCurrentDrawAmps() {
-  //   // I = V / R - omega / (Kv * R)
-  //   // Reductions are output over input, so a reduction of 2:1 means the motor is spinning
-  //   // 2x faster than the wheel
-  //   return m_gearbox.getCurrent(getAngularVelocityRadPerSec() * m_gearing, m_u.get(0, 0))
-  //       * Math.signum(m_u.get(0, 0));
+  // // I = V / R - omega / (Kv * R)
+  // // Reductions are output over input, so a reduction of 2:1 means the motor is
+  // spinning
+  // // 2x faster than the wheel
+  // return m_gearbox.getCurrent(getAngularVelocityRadPerSec() * m_gearing,
+  // m_u.get(0, 0))
+  // * Math.signum(m_u.get(0, 0));
   // }
 
   /**
