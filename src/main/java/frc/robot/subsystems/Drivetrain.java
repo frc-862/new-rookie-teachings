@@ -39,7 +39,7 @@ public class Drivetrain extends SubsystemBase {
             // heading: 0.001 rad
             // l and r velocity: 0.1 m/s
             // l and r position: 0.005 m
-            VecBuilder.fill(0.001, 0.001, 0.001, 0.1, 0.1, 0.005, 0.005));
+            VecBuilder.fill(0.001, 0.001, 0.001, 0.01, 0.05, 0.005, 0.005));
 
     private TalonFX m_leftMotor = new TalonFX(RobotMap.DRIVE_LEFT_ID);
     private TalonFX m_rightMotor = new TalonFX(RobotMap.DRIVE_RIGHT_ID);
@@ -55,18 +55,15 @@ public class Drivetrain extends SubsystemBase {
 
 
     public Drivetrain() {
-        AutoBuilder.configureLTV(
+        AutoBuilder.configureRamsete(
                 this::getPose, // Robot pose supplier
                 this::resetPose, // Method to reset odometry (will be called if your auto has a starting pose)
                 this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
                 (speeds) -> driveRobotRelative(speeds), // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds. Also optionally outputs individual module feedforwards
-                0.02, 
                 new ReplanningConfig(), // The robot configuration
-                () -> {return false;},
+                () -> false,
                 this // Reference to this subsystem to set requirements
-    );
-
-    
+    );    
     }
 
     public void simulationPeriodic() {
@@ -111,6 +108,9 @@ public class Drivetrain extends SubsystemBase {
                 m_driveSim.getLeftPositionMeters(),
                 m_driveSim.getRightPositionMeters());
         m_field.setRobotPose(m_odometry.getPoseMeters());
+
+        LightningShuffleboard.setDouble("drivetrain", "sped", m_driveSim.getLeftVelocityMetersPerSecond());
+
 
         LightningShuffleboard.send("drivetrain", "pose", m_field);
     }

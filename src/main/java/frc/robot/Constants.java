@@ -15,6 +15,6 @@ public final class Constants {
         public static final int DRIVE_LEFT_ID = 1;
         public static final int DRIVE_RIGHT_ID = 2;
 
-        public static final int MAX_SPEED = 3; //meters per second
+        public static final double MAX_SPEED = 5.597; //meters per second
     }
 }

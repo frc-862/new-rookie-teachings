@@ -72,14 +72,16 @@
   },
   "NetworkTables": {
     "transitory": {
-      "FMSInfo": {
+      "Shuffleboard": {
+        "drivetrain": {
+          "open": true
+        },
         "open": true
       },
       "SmartDashboard": {
         "Auto Chooser": {
           "open": true
-        },
-        "open": true
+        }
       }
     }
   },
@@ -90,11 +92,9 @@
     "Server": {
       "Subscribers": {
         "open": true
-      }
+      },
+      "open": true
     },
     "visible": true
-  },
-  "NetworkTables View": {
-    "visible": false
   }
 }
