@@ -24,7 +24,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class RobotContainer {
 
-    private Drivetrain drivetrian = new Drivetrain();
+    private Drivetrain drivetrain = new Drivetrain();
     private Collector collector = new Collector();
     private Shooter shooter = new Shooter();
     private Indexer indexer = new Indexer();
@@ -53,8 +53,7 @@ public class RobotContainer {
     }
 
     public void configureDefaultCommands() {
-        collector.setDefaultCommand(new Collect(collector, () -> controller.getRawAxis(2)));    
-        drivetrian.setDefaultCommand(new RunCommand(() -> drivetrian.setVelocities(-controller.getRawAxis(1) * RobotMap.MAX_SPEED, -controller.getRawAxis(0) * RobotMap.MAX_SPEED), drivetrian));
+        drivetrain.setDefaultCommand(new RunCommand(() -> drivetrain.setVelocities(-controller.getRawAxis(1) * RobotMap.MAX_SPEED, -controller.getRawAxis(0) * RobotMap.MAX_SPEED), drivetrain));
 
         NamedCommands.registerCommand("Collect", new Collect(collector, () -> 1));
     }

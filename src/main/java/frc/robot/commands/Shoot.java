@@ -11,16 +11,6 @@ import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Shooter;
 
 public class Shoot extends Command {
-    /* **REQUIREMENTS**
-     * Set shooter power to 1
-     * Set indexer power to 0.5
-     * 
-     * ON END:
-     * Stop shooter
-     * Stop indexer
-     * 
-     * TODO: create indexer, implement shooter
-    */
 
     private Shooter shooter;
     private Indexer indexer;
