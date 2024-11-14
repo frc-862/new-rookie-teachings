@@ -9,6 +9,7 @@ import frc.robot.commands.Collect;
 import frc.robot.commands.Shoot;
 import frc.robot.subsystems.Collector;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Shooter;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -26,6 +27,7 @@ public class RobotContainer {
     private Drivetrain drivetrian = new Drivetrain();
     private Collector collector = new Collector();
     private Shooter shooter = new Shooter();
+    private Indexer indexer = new Indexer();
 
 
 
@@ -46,9 +48,8 @@ public class RobotContainer {
     }
 
     private void configureBindings() {
-        // new Trigger(() -> controller.getRawButton(1)).onTrue(new Shoot(shooter));
-
-        
+        new Trigger(() -> controller.getAButton()).whileTrue(new Shoot(shooter, indexer));
+        new Trigger(() -> controller.getRightTriggerAxis() > 0.1).whileTrue(new Collect(collector, () -> controller.getRightTriggerAxis()));
     }
 
     public void configureDefaultCommands() {

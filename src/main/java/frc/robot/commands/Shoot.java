@@ -4,7 +4,9 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Shooter;
 
@@ -23,24 +25,45 @@ public class Shoot extends Command {
     private Shooter shooter;
     private Indexer indexer;
 
+    private Timer timer;
+    private boolean hasShot;
+
     public Shoot(Shooter shooter, Indexer indexer) {
         //add requirements
         this.shooter = shooter;
         this.indexer = indexer;
 
+        timer = new Timer();
+        hasShot = false;
 
+        addRequirements(shooter, indexer);
     }
 
     @Override
-    public void initialize() {}
+    public void initialize() {
+        timer.reset();
+        timer.start();
+
+    }
 
     @Override
     public void execute() {
-        //do you need to do anything here?
+        if (!hasShot) {
+            shooter.setPower(1d);
+
+            if (timer.get() > ShooterConstants.TIME_TO_SHOOT){
+                indexer.setPower(0.5d);
+                hasShot = true;
+                timer.stop();
+            }
+        }
     }
 
     @Override
-    public void end(boolean interrupted) {}
+    public void end(boolean interrupted) {
+        indexer.stop();
+        shooter.stop();
+    }
 
     @Override
     public boolean isFinished() {

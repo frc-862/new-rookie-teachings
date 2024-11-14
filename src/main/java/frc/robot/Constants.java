@@ -21,4 +21,5 @@ public final class Constants {
     public static class ShooterConstants {
         public static final double TIME_TO_SHOOT = 1.5;
     }
+    
 }
