@@ -8,16 +8,18 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.RobotMap;
 import frc.robot.lib.SimMotor;
 
-public class Shooter extends SubsystemBase {
+public class Indexer extends SubsystemBase {
 
   private SimMotor motor;
 
-  public Shooter() {
-    motor = new SimMotor(RobotMap.FLYWHEEL_ID);
+  /** Creates a new Indexer. */
+  public Indexer() {
+    motor = new SimMotor(RobotMap.INDEXER_ID);
   }
 
   @Override
   public void periodic() {
+    // This method will be called once per scheduler run
   }
 
   public void setPower(double power) {
@@ -27,4 +29,5 @@ public class Shooter extends SubsystemBase {
   public void stop() {
     setPower(0d);
   }
+
 }

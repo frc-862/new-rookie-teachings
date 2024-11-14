@@ -28,11 +28,14 @@ public class RobotContainer {
     private Shooter shooter = new Shooter();
 
 
-  private final SendableChooser<Command> autoChooser;
+
+    private final SendableChooser<Command> autoChooser;
 
     private final XboxController controller = new XboxController(Constants.OperatorConstants.DRIVER);
 
     public RobotContainer() {
+
+
         configureBindings();
         configureDefaultCommands();
 
@@ -43,7 +46,9 @@ public class RobotContainer {
     }
 
     private void configureBindings() {
-        new Trigger(() -> controller.getRawButton(1)).onTrue(new Shoot(shooter));
+        // new Trigger(() -> controller.getRawButton(1)).onTrue(new Shoot(shooter));
+
+        
     }
 
     public void configureDefaultCommands() {

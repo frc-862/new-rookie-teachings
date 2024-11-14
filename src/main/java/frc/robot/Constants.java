@@ -17,4 +17,8 @@ public final class Constants {
 
         public static final double MAX_SPEED = 5.597; //meters per second
     }
+
+    public static class ShooterConstants {
+        public static final double TIME_TO_SHOOT = 1.5;
+    }
 }
