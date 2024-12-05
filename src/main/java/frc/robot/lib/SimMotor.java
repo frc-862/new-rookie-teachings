@@ -92,11 +92,12 @@ public class SimMotor {
 
     public void set(double power) {
         // cut power when veloc above motor limits
+        
         if (Math.abs(wheelSim.getVelocity()) >= maxSpeed) {
             power = MathUtil.clamp(power, 0, -Math.signum(wheelSim.getVelocity()));
         }
-
-        power += Math.signum(getVelocity()) * getVelocity() * decayGain;
+        
+        power -= getVelocity() * decayGain;
 
         wheelSim.setInputVoltage(power * 12);
     }

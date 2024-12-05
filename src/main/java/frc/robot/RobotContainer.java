@@ -49,13 +49,15 @@ public class RobotContainer {
 
     private void configureBindings() {
         new Trigger(() -> controller.getAButton()).whileTrue(new Shoot(shooter, indexer));
-        new Trigger(() -> controller.getRightTriggerAxis() > 0.1).whileTrue(new Collect(collector, () -> controller.getRightTriggerAxis()));
+        new Trigger(() -> controller.getRawAxis(2) > 0.1).whileTrue(new Collect(collector, () -> controller.getRawAxis(2)));
     }
 
     public void configureDefaultCommands() {
         drivetrain.setDefaultCommand(new RunCommand(() -> drivetrain.setVelocities(-controller.getRawAxis(1) * RobotMap.MAX_SPEED, -controller.getRawAxis(0) * RobotMap.MAX_SPEED), drivetrain));
 
         NamedCommands.registerCommand("Collect", new Collect(collector, () -> 1));
+        NamedCommands.registerCommand("Shoot", new Shoot(shooter, indexer));
+        
     }
 
     public Command getAutonomousCommand() {

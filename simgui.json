@@ -26,6 +26,8 @@
       "/FMSInfo": "FMSInfo",
       "/Shuffleboard/5/ligament": "Mechanism2d",
       "/Shuffleboard/COLLECTOR/ligament": "Mechanism2d",
+      "/Shuffleboard/FLYWHEEL/ligament": "Mechanism2d",
+      "/Shuffleboard/INDEXER/ligament": "Mechanism2d",
       "/Shuffleboard/drivetrain/pose": "Field2d",
       "/SmartDashboard/Auto Chooser": "String Chooser",
       "/SmartDashboard/Field": "Field2d"
@@ -34,6 +36,16 @@
       "/Shuffleboard/COLLECTOR/ligament": {
         "window": {
           "name": "COLLECTOR",
+          "visible": true
+        }
+      },
+      "/Shuffleboard/FLYWHEEL/ligament": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/Shuffleboard/INDEXER/ligament": {
+        "window": {
           "visible": true
         }
       },
@@ -73,6 +85,9 @@
   "NetworkTables": {
     "transitory": {
       "Shuffleboard": {
+        "COLLECTOR": {
+          "open": true
+        },
         "drivetrain": {
           "open": true
         },
@@ -96,5 +111,8 @@
       "open": true
     },
     "visible": true
+  },
+  "NetworkTables View": {
+    "visible": false
   }
 }
